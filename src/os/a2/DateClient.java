@@ -17,8 +17,11 @@ public class DateClient {
                     = new BufferedReader(new InputStreamReader(System.in));
             String userInput;
 
-            //System.out.println("Hit 'x' to close connection");
+            System.out.println("Hit 'x' to close connection");
             while ((userInput = stdIn.readLine()) != null) {
+                if(userInput.equals("x")){
+                    sock.close();
+                }
                 pout.println(userInput);
                 System.out.println("echo:" +in.readLine());
             }
