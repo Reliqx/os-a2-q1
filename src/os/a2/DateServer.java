@@ -8,16 +8,18 @@ public class DateServer {
     public static void main(String[] args) {
         try {
             ServerSocket sock = new ServerSocket(6013);
-            /* now listen for connections */
+          //accepts connections 
             while (true) {
                 Socket client = sock.accept();
                 try (
-                        
+                        //this will get whatever the client has written in the socket
                         PrintWriter out
                         = new PrintWriter(client.getOutputStream(), true);
+                        //reads the socket
                         BufferedReader in = new BufferedReader(
                                 new InputStreamReader(client.getInputStream()));) {
                     String inputLine;
+                    //prints the information within the socket
                     while ((inputLine = in.readLine()) != null) {
                         out.println(inputLine);
 
@@ -29,7 +31,7 @@ public class DateServer {
                     System.out.println(e.getMessage());
                 }
                 client.close();
-                 sock.close();
+                 //sock.close();
             }
             
            
